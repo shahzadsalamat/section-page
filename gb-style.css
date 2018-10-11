@@ -3805,13 +3805,15 @@ li.footer-contact-item .footer-contact-link svg {
   flex-direction: column;
 }
 
-.gb-card-two-wrapper p{
+.gb-card-two-wrapper-description{
+  max-width: 700px;
   box-sizing: border-box;
-  padding: 0 120px;
+  padding: 0 20px;
+  text-align: center;
 }
 
 @media screen and (max-width: 550px) {
-  .gb-card-two-wrapper p{
+  .gb-card-two-wrapper-description{
     display: none;
   }
 }
