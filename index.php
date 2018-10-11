@@ -52,7 +52,7 @@
         </div>
         <ul class='nav-aside-content-top'>
           <li class='nav-aside-top-list-item'>
-            <a data-scroll-to='about-us' class='nav-aside-link gb-text-white' href='http://www.globuzzer.com/'>
+            <a class='nav-aside-link gb-text-white' href='http://www.globuzzer.com/'>
               <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
                 <use xlink:href='#home'></use>
@@ -115,7 +115,7 @@
         <div class='header-black-overlay'></div>
         <!-- CARD TWO STARTS -->
         <div class="gb-card-two-wrapper" style="background-image: linear-gradient( to bottom right, rgba(0, 0, 0, 0.0001) 0%, #272121 100% ),url(<?php echo $aData["image"] ?>);">
-          <h2 class="gb-title-xx-large gb-text-uppercase"><?php echo $aData["name"] ?></h2>
+          <h2 class="gb-title-xx-large gb-text-uppercase gb-margin-top-phone-16"><?php echo $aData["name"] ?></h2>
           <div class="gb-card-two-wrapper-description gb-margin-bottom-desktop-32 gb-margin-bottom-tablet-32">
             <p class="gb-paragraph-medium gb-margin-bottom-desktop-32 "><?php echo $aData["description"] ?></p>
          </div>
