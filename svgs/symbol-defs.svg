@@ -148,4 +148,18 @@
 102 66 6 -3 47 -35 93 -71z"/>
 </g>
    </symbol>
+ <symbol id="source" viewBox="0 0 50 50">
+      <title>source</title>
+      <g>
+        <path d="M0 20C5.33333 14.4772 5.33333 5.52285 0 0" transform="translate(16 15)"  stroke-width="2" stroke-linecap="round"/>
+        <path d="M0 30C8 21.7157 8 8.28427 0 0" transform="translate(30 10)"  stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </symbol>
+    <symbol id="clock" viewBox="0 0 30 30">
+      <title>clock</title>
+      <g>
+        <path d="M15 29C7.26791 29 1 22.7341 1 15C1 7.27005 7.26809 1 15 1C22.7319 1 29 7.27005 29 15C29 22.7341 22.7321 29 15 29Z"   stroke-width="2"/>
+        <path d="M8 10H0V0" transform="translate(14 8)" stroke-width="2"/>  
+      </g>
+    </symbol>
   </defs>

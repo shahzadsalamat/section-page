@@ -15,56 +15,14 @@ function init(){
 		}
 	}
 
-	/* SEARCH BAR */
-	let searchForm = document.querySelector('.gb-search-form');
-
-	searchForm.addEventListener('submit', (e) => {
-		e.preventDefault();
-
-		const value = searchForm.querySelector('.search-input').value.replace(/[^a-z0-9]/g, '')
-		if(value){
-			window.open(`https://globuzzer.mn.co/search?term=’${value}’`)
-		}
-	});
-
 	/* Nav Bar */
 	const header = document.querySelector('.header');
 	const navBar = document.querySelector('.gb-navbar');
 	const navBarHeight = navBar.scrollHeight;
-
-	/* Black overlay header */
-	const blackHeaderOverlay = document.querySelector('.header-black-overlay');
-
-	/* Sections holder, auto scroll on X*/
-	const sectionsHolder = document.querySelector('.gb-card-six');
-	let alreadyScrolled = false;
-	let scrollAt = 0;
-	let scrollXinerval;
-
-	let citySectionPassed = sectionsHolder.getBoundingClientRect().y + sectionsHolder.clientHeight/2 < 0; //initial scroll of the page is allready ove it if < 0 is passed
-
-	const scrollSectionX = () => {
-		scrollAt+=2;
-		sectionsHolder.scrollTo({
-			left: scrollAt
-		});
-		let sectionWidth = sectionsHolder.scrollWidth*0.2;
-		sectionWidth = sectionWidth > 150? 150 : sectionWidth;
-		
-		if(scrollAt >= sectionWidth){
-			clearInterval(scrollXinerval)
-		}
-	}
+	 
 	//Scroll effect
 	const scrolling = (e) => {
-		/* Script for the blackHeaderOverlay to change it's opacity */
-		const scrollY = window.scrollY;
-		const headerHeight = header.scrollHeight;
-		if(scrollY < headerHeight){
-			blackHeaderOverlay.style.opacity = ((scrollY + 1) /headerHeight )/2
-		}
-		
-
+	
 		/* Script for the nav to be sticky */
 
 		const isPassed = scrollY >= 10;
@@ -78,21 +36,7 @@ function init(){
 
 
 		/* Script that autoscroll when half of the sections is in the view */
-		if(!alreadyScrolled){
-			let sectionsDistanceFromTop
-			
-			if(citySectionPassed){
-				sectionsDistanceFromTop = - (sectionsHolder.getBoundingClientRect().y + sectionsHolder.clientHeight / 2)
-			}else{
-				sectionsDistanceFromTop = sectionsHolder.getBoundingClientRect().y - window.innerHeight + sectionsHolder.clientHeight/2;
-			}
-
-			
-			if(sectionsDistanceFromTop < 0){
-				alreadyScrolled = true;
-				scrollXinerval = setInterval(scrollSectionX,50)
-			}
-		}
+	 
 	}
 	scrolling();
 	window.addEventListener('scroll' , debounce(scrolling));
@@ -171,7 +115,6 @@ function init(){
 
 	listToBeFixedListener();
 	window.addEventListener('resize' , debounce(listToBeFixedListener));
-
 
 }
 init();
