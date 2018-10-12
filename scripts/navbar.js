@@ -13,7 +13,7 @@ function init(){
 			timeout = setTimeout(later, wait);
 			if (callNow) func.apply(context, args);
 		}
-	}
+	};
 
 	/* Nav Bar */
 	const navBar = document.querySelector('.gb-navbar');
@@ -34,7 +34,7 @@ function init(){
 
 		/* Script that autoscroll when half of the sections is in the view */
 	 
-	}
+	};
 	scrolling();
 	window.addEventListener('scroll' , debounce(scrolling));
 
@@ -50,7 +50,7 @@ function init(){
 		}else if(!showElementToFixWith && shown){
 			elementToFixWith.classList.remove('shown')
 		}
-	}
+	};
 
 	listToBeFixedListener();
 	window.addEventListener('resize' , debounce(listToBeFixedListener));

@@ -148,13 +148,14 @@ function renderArticle($sTitle, $sContent, $sSource, $sPostedDate, $sURL)
         <div class='gb-card-four-sub-card-info'>
             <h2 class='gb-title-medium'><?php echo $sTitle ?></h2>
             <p class='gb-paragraph-small gb-margin-bottom-tablet-48 gb-margin-bottom-desktop-48'><?php echo $sContent ?></p>
+            <a href="<?php echo $sSource ?>"  target="_blank" class="gb-btn gb-btn-small gb-btn-white" type="button">View article</a>
             <ul class='posted-info'>
                 <li class='posted-by'>
-                    <svg class='source gb-icon-black-opacity-30 gb-icon-small' version='1.1'
+                    <!--svg class='source gb-icon-black-opacity-30 gb-icon-small' version='1.1'
                          xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
                         <use xlink:href='#source'></use>
                     </svg>
-                    <a class='gb-text-black' href='#'><?php echo $sSource ?></a>
+                    <a class='gb-text-black' href='#'><?php echo $sSource ?></a-->
                 </li>
                 <li class='posted-at'>
                     <svg class='gb-icon-black-opacity-30 posted-date gb-icon-small' version='1.1'
