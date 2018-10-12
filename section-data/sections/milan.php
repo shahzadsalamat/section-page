@@ -1,8 +1,8 @@
 <?php
-//TODO: add articles oslo
-include_once("articles/helsinki-article.php");
+//TODO: Articles Rome
+include_once("articles/copenhagen-article.php");
 
-global $aArticlesHelsinki;
+global $aArticlesMilan;
 
 $sPicture = "section-data/images/Milan.jpg";
 $sName = "Milan";
@@ -14,5 +14,5 @@ $aDataMilan = [
     "description" => $sDescription,
     "numMembers" => $iNumMembers,
     "image" => $sPicture,
-    "articles" => $aArticlesHelsinki
+    "articles" => $aArticlesCopenhagen
 ];
