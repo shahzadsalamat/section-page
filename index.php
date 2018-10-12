@@ -28,11 +28,6 @@
     <?php
     session_start();
     include_once("section-data/section-data.php");
-    global $aSectionData;
-    if (isset($_REQUEST["section"])) {
-    // url: http://localhost/globuzzer-homepage-section/?section=322063
-    $sSection = $_REQUEST["section"]; // e.g. 322063 for Copenhagen
-    $aData = $aSectionData[$sSection];
     ?>
 
 </head>
@@ -40,52 +35,203 @@
 
 <div class='gb-app-wrapper'>
     <div class='gb-app-black-overlay'></div>
-    <!-- NavAside start -->
-    <div class='gb-nav-aside gb-gradient-red-black'>
-      <div class='nav-aside-image-background'>
-      </div>
-      <div class='nav-aside-content'>
-        <div class='nav-aside-close'>
-          <svg class='nav-aside-close-icon gb-icon-medium gb-icon-white-opacity-50 gb-phone-hide' version="1.1" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink">
-            <use xlink:href='#close'></use>
-          </svg>
-        </div>
-        <ul class='nav-aside-content-top'>
-          <li class='nav-aside-top-list-item'>
-            <a class='nav-aside-link gb-text-white' href='http://www.globuzzer.com/'>
-              <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <use xlink:href='#home'></use>
-              </svg>
-              <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>Home</h5>
-            </a>
-          </li>
-          <li class='nav-aside-top-list-item'>
-            <a href='https://globuzzer.mn.co/sign_in' class='nav-aside-link gb-text-white' href='#'>
-              <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <use xlink:href='#calendar'></use>
-              </svg>
-              <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>sign in</h5>
-            </a>
-          </li>
-        </ul>
-        <div class='nav-aside-content-bottom line-top'>
-          <div class='content-left'>
-            <a href="#">
-              <svg class="gb-logo-large gb-icon-fill-white" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <use xlink:href="#gb-logo-large"></use>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- NavAside End -->
+    <?php
+    // data of all sections
+    global $aSectionData;
 
-    <!-- Nav start-->
+    renderNavAside();
+    renderNavBar();
+
+    if (isset($_REQUEST["section"])) {
+        $sSectionId = $_REQUEST["section"]; // e.g. 322063 for Copenhagen
+        $aData = $aSectionData[$sSectionId]; // data of current section
+        renderData($sSectionId, $aData["image"], $aData["name"], $aData["numMembers"], $aData["description"], $aData["articles"]);
+    }
+
+    renderFooter();
+
+    ?>
+</div>
+<?php
+
+/**************
+ * FUNCTIONS
+ **************/
+
+/**
+ * Renders the data of the current section.
+ *
+ * @param $sSectionId
+ * @param $sImgURL
+ * @param $sTitle
+ * @param $iNumberMembers
+ * @param $sDescription
+ * @param $aArticles
+ */
+function renderData($sSectionId, $sImgURL, $sTitle, $iNumberMembers, $sDescription, $aArticles)
+{
+    ?>
+    <div class='gb-page-wrapper'>
+        <!-- Header start-->
+        <div class='header'>
+            <div class='header-black-overlay'></div>
+            <?php
+            renderHeader($sSectionId, $sImgURL, $sTitle, $sDescription, $iNumberMembers);
+            renderArticles($aArticles);
+            ?>
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * Renders header with picture, title, description and number of
+ * members of the current section.
+ *
+ * @param $sSectionId
+ * @param $sImgURL
+ * @param $sTitle
+ * @param $sDescription
+ * @param $iNumberMembers
+ */
+function renderHeader($sSectionId, $sImgURL, $sTitle, $sDescription, $iNumberMembers)
+{
+    ?>
+    <div class="gb-card-two-wrapper"
+         style="background-image: linear-gradient( to bottom right, rgba(0, 0, 0, 0.0001) 0%, #272121 100% ),url(<?php echo $sImgURL ?>);">
+        <h2 class="gb-title-xx-large gb-text-uppercase gb-margin-top-phone-16"><?php echo $sTitle ?></h2>
+        <div class="gb-card-two-wrapper-description gb-margin-bottom-desktop-32 gb-margin-bottom-tablet-32">
+            <p class="gb-paragraph-medium gb-margin-bottom-desktop-32 "><?php echo $sDescription ?></p>
+        </div>
+        <a href="https://globuzzer.mn.co/groups/<?php echo $sSectionId ?>"  target="_blank" class="gb-btn gb-btn-small gb-btn-white" type="button">Join</a>
+        <div class="gb-avatars">
+            <h4 class="gb-title-medium">
+                <?php echo $iNumberMembers ?> Members</h4>
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * Renders previews of articles of the section.
+ *
+ * @param $aArticles
+ */
+function renderArticles($aArticles)
+{
+    ?>
+    <div class='gb-card-four-wrapper'>
+        <ul class='gb-card-four-sub-cards'>
+            <?php
+            foreach ($aArticles as $aArticle) {
+                renderArticle($aArticle["title"], $aArticle["content"], $aArticle["source"], $aArticle["postedDate"], $aArticle["url"]);
+            }
+            ?>
+        </ul>
+    </div>
+    <?php
+}
+
+/**
+ * Renders preview of a single article.
+ *
+ * @param $sTitle
+ * @param $sContent
+ * @param $sSource
+ * @param $sPostedDate
+ * @param $sURL
+ */
+function renderArticle($sTitle, $sContent, $sSource, $sPostedDate, $sURL)
+{
+    ?>
+    <li class='gb-card-four-sub-card'>
+        <div class='gb-card-four-sub-card-info'>
+            <h2 class='gb-title-medium'><?php echo $sTitle ?></h2>
+            <p class='gb-paragraph-small gb-margin-bottom-tablet-48 gb-margin-bottom-desktop-48'><?php echo $sContent ?></p>
+            <ul class='posted-info'>
+                <li class='posted-by'>
+                    <svg class='source gb-icon-black-opacity-30 gb-icon-small' version='1.1'
+                         xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                        <use xlink:href='#source'></use>
+                    </svg>
+                    <a class='gb-text-black' href='#'><?php echo $sSource ?></a>
+                </li>
+                <li class='posted-at'>
+                    <svg class='gb-icon-black-opacity-30 posted-date gb-icon-small' version='1.1'
+                         xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                        <use xlink:href='#clock'></use>
+                    </svg>
+                    <p><?php echo $sPostedDate ?></p>
+                </li>
+            </ul>
+        </div>
+        <div class='gb-card-four-sub-card-image'>
+            <img src='<?php echo $sURL ?>' alt='story-image'>
+        </div>
+    </li>
+    <?php
+}
+
+/**
+ * Renders sidebar for mobile menu.
+ */
+function renderNavAside()
+{
+    ?>
+    <div class='gb-nav-aside gb-gradient-red-black'>
+        <div class='nav-aside-image-background'>
+        </div>
+        <div class='nav-aside-content'>
+            <div class='nav-aside-close'>
+                <svg class='nav-aside-close-icon gb-icon-medium gb-icon-white-opacity-50 gb-phone-hide' version="1.1"
+                     xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <use xlink:href='#close'></use>
+                </svg>
+            </div>
+            <ul class='nav-aside-content-top'>
+                <li class='nav-aside-top-list-item'>
+                    <a class='nav-aside-link gb-text-white' href='http://www.globuzzer.com/'>
+                        <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <use xlink:href='#home'></use>
+                        </svg>
+                        <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>Home</h5>
+                    </a>
+                </li>
+                <li class='nav-aside-top-list-item'>
+                    <a href='https://globuzzer.mn.co/sign_in' class='nav-aside-link gb-text-white'>
+                        <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <use xlink:href='#calendar'></use>
+                        </svg>
+                        <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>sign in</h5>
+                    </a>
+                </li>
+            </ul>
+            <div class='nav-aside-content-bottom line-top'>
+                <div class='content-left'>
+                    <a href="#">
+                        <svg class="gb-logo-large gb-icon-fill-white" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <use xlink:href="#gb-logo-large"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * Renders navigation bar on the top.
+ */
+function renderNavBar()
+{
+    ?>
     <div class="gb-navbar gb-background-transparent">
         <div class="left-content">
             <a href='#' class='gb-desktop-hide nav-burger'>
@@ -109,69 +255,15 @@
                 in</a>
         </div>
     </div>
-    <!-- Nav end-->
+    <?php
+}
 
-
-    <!-- Page wrapper start -->
-    <div class='gb-page-wrapper'>
-      <!-- Header start-->
-      <div class='header'>
-        <div class='header-black-overlay'></div>
-        <!-- CARD TWO STARTS -->
-        <div class="gb-card-two-wrapper" style="background-image: linear-gradient( to bottom right, rgba(0, 0, 0, 0.0001) 0%, #272121 100% ),url(<?php echo $aData["image"] ?>);">
-          <h2 class="gb-title-xx-large gb-text-uppercase gb-margin-top-phone-16"><?php echo $aData["name"] ?></h2>
-          <div class="gb-card-two-wrapper-description gb-margin-bottom-desktop-32 gb-margin-bottom-tablet-32">
-            <p class="gb-paragraph-medium gb-margin-bottom-desktop-32 "><?php echo $aData["description"] ?></p>
-         </div>
-          <input class="gb-btn gb-btn-small gb-btn-white" value="Join" type="button">
-          <div class="gb-avatars">
-            <h4 class="gb-title-medium">
-              <?php echo $aData["numMembers"] ?> Members</h4>
-          </div>
-        </div>
-        <!-- CARD TWO ENDS -->
-
-            <!-- SECTION'S ARTICLE STARTS -->
-            <div class='gb-card-four-wrapper'>
-                <ul class='gb-card-four-sub-cards'>
-                    <?php
-                    foreach ($aData["articles"] as $article) {
-                        echo "<li class='gb-card-four-sub-card'>
-            <div class='gb-card-four-sub-card-info'>
-              <h2 class='gb-title-medium'>" . $article["title"] . "</h2>
-              <p class='gb-paragraph-small gb-margin-bottom-tablet-48 gb-margin-bottom-desktop-48'>" . $article["content"] . "</p>
-              <ul class='posted-info'>
-                <li class='posted-by'>
-                  <svg class='source gb-icon-black-opacity-30 gb-icon-small' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
-                    <use xlink:href='#source'></use>
-                  </svg>
-                  <a class='gb-text-black' href='#'>" . $article["source"] . "</a>
-                </li>
-                <li class='posted-at'>
-                  <svg class='gb-icon-black-opacity-30 posted-date gb-icon-small' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
-                    <use xlink:href='#clock'></use>
-                  </svg>
-                  <p>" . $article["postedDate"] . "</p>
-                </li>
-              </ul>
-            </div>
-            <div class='gb-card-four-sub-card-image'>
-              <img src='" . $article["url"] . "' alt='story-image'>
-            </div>
-          </li>";
-                    }
-                    ?>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            </div>
-        </div>
-        <!--  SECTION'S ARTICLE ENDS -->
-    </div>
-    <!-- Header end -->
-
-    <!-- Footer Start -->
+/**
+ * Renders footer
+ */
+function renderFooter()
+{
+    ?>
     <div class="gb-footer gb-background-black-opacity-5">
         <div class="footer-wrapper">
             <div class='footer-top-content'>
@@ -304,9 +396,10 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
-</div>
-</div>
+    <?php
+}
+
+?>
 
 <script type='text/javascript' src='scripts/svgs-loader.js'></script>
 <script type='text/javascript' src='scripts/nav-aside-trigger.js'></script>

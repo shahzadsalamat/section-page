@@ -1,5 +1,5 @@
 <?php
-
+//TODO: add articles oslo
 include_once("articles/helsinki-article.php");
 
 global $aArticlesHelsinki;
