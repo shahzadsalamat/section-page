@@ -42,49 +42,46 @@
     <div class='gb-app-black-overlay'></div>
     <!-- NavAside start -->
     <div class='gb-nav-aside gb-gradient-red-black'>
-        <div class='nav-aside-image-background'>
+      <div class='nav-aside-image-background'>
+      </div>
+      <div class='nav-aside-content'>
+        <div class='nav-aside-close'>
+          <svg class='nav-aside-close-icon gb-icon-medium gb-icon-white-opacity-50 gb-phone-hide' version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <use xlink:href='#close'></use>
+          </svg>
         </div>
-        <div class='nav-aside-content'>
-            <div class='nav-aside-close'>
-                <svg class='nav-aside-close-icon gb-icon-medium gb-icon-white-opacity-50 gb-phone-hide' version="1.1"
-                     xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <use xlink:href='#close'></use>
-                </svg>
-            </div>
-            <ul class='nav-aside-content-top'>
-                <li class='nav-aside-top-list-item'>
-                    <a data-scroll-to='about-us' class='nav-aside-link gb-text-white' href='http://www.globuzzer.com/'>
-                        <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1"
-                             xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <use xlink:href='#home'></use>
-                        </svg>
-                        <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>Home</h5>
-                    </a>
-                </li>
-                <li class='nav-aside-top-list-item'>
-                    <a href='https://globuzzer.mn.co/sign_in' class='nav-aside-link gb-text-white' href='#'>
-                        <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1"
-                             xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <use xlink:href='#calendar'></use>
-                        </svg>
-                        <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>sign in</h5>
-                    </a>
-                </li>
-            </ul>
-            <div class='nav-aside-content-bottom line-top'>
-                <div class='content-left'>
-                    <a href="#">
-                        <svg class="gb-logo-large gb-icon-fill-white" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <use xlink:href="#gb-logo-large"></use>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <ul class='nav-aside-content-top'>
+          <li class='nav-aside-top-list-item'>
+            <a class='nav-aside-link gb-text-white' href='http://www.globuzzer.com/'>
+              <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <use xlink:href='#home'></use>
+              </svg>
+              <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>Home</h5>
+            </a>
+          </li>
+          <li class='nav-aside-top-list-item'>
+            <a href='https://globuzzer.mn.co/sign_in' class='nav-aside-link gb-text-white' href='#'>
+              <svg class='nav-aside-icon gb-icon-medium gb-icon-white-opacity-50' version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <use xlink:href='#calendar'></use>
+              </svg>
+              <h5 class='gb-text-uppercase gb-text-white gb-title-tiny gb-text-uppercase'>sign in</h5>
+            </a>
+          </li>
+        </ul>
+        <div class='nav-aside-content-bottom line-top'>
+          <div class='content-left'>
+            <a href="#">
+              <svg class="gb-logo-large gb-icon-fill-white" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <use xlink:href="#gb-logo-large"></use>
+              </svg>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
     <!-- NavAside End -->
 
@@ -117,23 +114,22 @@
 
     <!-- Page wrapper start -->
     <div class='gb-page-wrapper'>
-        <!-- Header start-->
-        <div class='header'>
-            <div class='header-black-overlay'></div>
-            <!-- CARD TWO STARTS -->
-            <div class="gb-card-two-wrapper"
-                 style="background-image: linear-gradient( to bottom right, rgba(0, 0, 0, 0.0001) 0%, #272121 100% ),url(<?php echo $aData["image"] ?>);">
-                <h2 class="gb-title-xx-large gb-text-uppercase"><?php echo $aData["name"] ?></h2>
-                <div class="gb-card-two-wrapper-description gb-margin-bottom-desktop-32 gb-margin-bottom-tablet-32">
-                    <p class="gb-paragraph-medium gb-margin-bottom-desktop-32 "><?php echo $aData["description"] ?></p>
-                </div>
-                <input class="gb-btn gb-btn-small gb-btn-white" value="Join" type="button">
-                <div class="gb-avatars">
-                    <h4 class="gb-title-medium">
-                        <?php echo $aData["numMembers"] ?> Members</h4>
-                </div>
-            </div>
-            <!-- CARD TWO ENDS -->
+      <!-- Header start-->
+      <div class='header'>
+        <div class='header-black-overlay'></div>
+        <!-- CARD TWO STARTS -->
+        <div class="gb-card-two-wrapper" style="background-image: linear-gradient( to bottom right, rgba(0, 0, 0, 0.0001) 0%, #272121 100% ),url(<?php echo $aData["image"] ?>);">
+          <h2 class="gb-title-xx-large gb-text-uppercase gb-margin-top-phone-16"><?php echo $aData["name"] ?></h2>
+          <div class="gb-card-two-wrapper-description gb-margin-bottom-desktop-32 gb-margin-bottom-tablet-32">
+            <p class="gb-paragraph-medium gb-margin-bottom-desktop-32 "><?php echo $aData["description"] ?></p>
+         </div>
+          <input class="gb-btn gb-btn-small gb-btn-white" value="Join" type="button">
+          <div class="gb-avatars">
+            <h4 class="gb-title-medium">
+              <?php echo $aData["numMembers"] ?> Members</h4>
+          </div>
+        </div>
+        <!-- CARD TWO ENDS -->
 
             <!-- SECTION'S ARTICLE STARTS -->
             <div class='gb-card-four-wrapper'>
