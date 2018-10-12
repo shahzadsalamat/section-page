@@ -18,6 +18,16 @@ include_once("sections/Salatiga.php");
 include_once("sections/Barcelona.php");
 include_once("sections/Lisbon.php");
 include_once("sections/Jakarta.php");
+include_once("sections/lahore.php");
+include_once("sections/bogota.php");
+include_once("sections/toronto.php");
+include_once("sections/sofia.php");
+include_once("sections/zagreb.php");
+include_once("sections/wurzburg.php");
+include_once("sections/sanFrancisco.php");
+include_once("sections/belgrade.php");
+include_once("sections/hebron.php");
+include_once("sections/Vilnius.php");
 // e.g. include_once("data/paris.php");
 
 global $aDataCopenhagen;
@@ -32,6 +42,16 @@ global $aDataBarcelona;
 global $aDataLisbon;
 global $aDataJakarta;
 global $aDataBogota;
+global $aDataLahore;
+global $aDataBogota;
+global $aDataToronto;
+global $aDataSofia;
+global $aDataZagreb;
+global $aDataWürzburg;
+global $aDataSanFrancisco;
+global $aDataBelgrade;
+global $aDataHebron;
+global $aDataVilnius;
 // e.g. global $aDataParis
 
 $aSectionData = [
@@ -46,6 +66,16 @@ $aSectionData = [
     "588489" => $aDataSalatiga,
     "195835" => $aDataBarcelona,
     "446233" => $aDataLisbon,
-    "244080" => $aDataJakarta
+    "244080" => $aDataJakarta,
+    "387773" => $aDataLahore,
+    "569795" => $aDataBogota,
+    "466728" => $aDataToronto,
+    "435389" => $aDataSofia,
+    "403651" => $aDataZagreb,
+    "318520" => $aDataWürzburg,
+    "312045" => $aDataSanFrancisco,
+    "294024" => $aDataBelgrade,
+    "273962" => $aDataHebron,
+    "210260" => $aDataVilnius,
     //"195834" => $aDataParis
 ];
