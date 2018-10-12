@@ -21,7 +21,7 @@ const navAsideTrigger = () => {
 			timeout = setTimeout(later, wait);
 			if (callNow) func.apply(context, args);
 		}
-	}
+	};
 
 
   //set the height of the body and navAside to the window height, weird bug on mobile with 100vh
@@ -30,7 +30,7 @@ const navAsideTrigger = () => {
     navAside.style.height = windowHeight + 'px';
     body.style.height = windowHeight + 'px';
     body.style.overflowY = 'hidden';
-  }
+  };
 
   const setHeightToWindowHeightDebounced = debounce(setHeightToWindowHeight);
 
@@ -43,7 +43,7 @@ const navAsideTrigger = () => {
     //show the sidemenu, by adding translated class
     appWrapper.classList.add('translated');
     navAside.classList.add('translated');
-  })
+  });
 
 
   //close the sidemenu
@@ -54,10 +54,10 @@ const navAsideTrigger = () => {
     //hide the sidemenu, by removing translated class
     appWrapper.classList.remove('translated');
     navAside.classList.remove('translated');
-  }
+  };
 
   blackOverlay.addEventListener('click' ,removeTranslated);
   navAsideCloseBtn.addEventListener('click' ,removeTranslated);
-}
+};
 
 navAsideTrigger();
