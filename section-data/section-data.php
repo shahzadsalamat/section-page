@@ -68,7 +68,6 @@ $aSectionData = [
     "446233" => $aDataLisbon,
     "244080" => $aDataJakarta,
     "387773" => $aDataLahore,
-    "569795" => $aDataBogota,
     "466728" => $aDataToronto,
     "435389" => $aDataSofia,
     "403651" => $aDataZagreb,
