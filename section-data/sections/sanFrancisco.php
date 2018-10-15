@@ -1,11 +1,11 @@
 <?php
-//TODO: Articles sanFrancisco
-include_once("articles/copenhagen-article.php");
 
-global $aArticlesCopenhagen;
+include_once("articles/san-francisco-article.php");
 
-$sPicture = "section-data/images/SanFrancisco.jpg";
-$sName = "SanFrancisco";
+global $aArticlesSanFrancisco;
+
+$sPicture = "https://media1-production-mightynetworks.imgix.net/asset/3264429/jack-finnigan-539853-unsplash.jpg?ixlib=rails-0.3.0&fm=jpg&q=75&auto=format&w=1400&h=1400&fit=max";
+$sName = "San Francisco";
 $sDescription = "";
 $iNumMembers = 107;
 
@@ -14,5 +14,5 @@ $aDataSanFrancisco = [
     "description" => $sDescription,
     "numMembers" => $iNumMembers,
     "image" => $sPicture,
-    "articles" => $aArticlesCopenhagen
+    "articles" => $aArticlesSanFrancisco
 ];

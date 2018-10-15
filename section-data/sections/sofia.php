@@ -1,10 +1,10 @@
 <?php
-//TODO: Articles Sofia
-include_once("articles/copenhagen-article.php");
 
-global $aArticlesCopenhagen;
+include_once("articles/sofia-article.php");
 
-$sPicture = "section-data/images/Sofia.jpg";
+global $aArticlesSofia;
+
+$sPicture = "https://ik.imagekit.io/mn/media-production/asset/2107918/first_estates.jpeg?tr=w-1400,h-1400,q-75,c-at_max";
 $sName = "Sofia";
 $sDescription = "The capital of Bulgaria – Sofia, is one of those cities you will either fall in love with at first sight or will never understand. Sofia is both old and young. Full of history and looking in the future. Modern and ancient.";
 $iNumMembers = 49;
@@ -14,5 +14,5 @@ $aDataSofia = [
     "description" => $sDescription,
     "numMembers" => $iNumMembers,
     "image" => $sPicture,
-    "articles" => $aArticlesCopenhagen
+    "articles" => $aArticlesSofia
 ];

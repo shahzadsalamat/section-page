@@ -47,7 +47,7 @@ global $aDataBogota;
 global $aDataToronto;
 global $aDataSofia;
 global $aDataZagreb;
-global $aDataWürzburg;
+global $aDataWuerzburg;
 global $aDataSanFrancisco;
 global $aDataBelgrade;
 global $aDataHebron;
@@ -68,11 +68,10 @@ $aSectionData = [
     "446233" => $aDataLisbon,
     "244080" => $aDataJakarta,
     "387773" => $aDataLahore,
-    "569795" => $aDataBogota,
     "466728" => $aDataToronto,
     "435389" => $aDataSofia,
     "403651" => $aDataZagreb,
-    "318520" => $aDataWürzburg,
+    "318520" => $aDataWuerzburg,
     "312045" => $aDataSanFrancisco,
     "294024" => $aDataBelgrade,
     "273962" => $aDataHebron,

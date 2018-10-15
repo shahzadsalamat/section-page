@@ -1,10 +1,10 @@
 <?php
-//TODO: Articles Toronto
-include_once("articles/copenhagen-article.php");
 
-global $aArticlesCopenhagen;
+include_once("articles/toronto-article.php");
 
-$sPicture = "section-data/images/Toronto.jpg";
+global $aArticlesToronto;
+
+$sPicture = "https://media1-production-mightynetworks.imgix.net/asset/2289215/Billy_Bishop.jpg?ixlib=rails-0.3.0&fm=jpg&q=75&auto=format&w=1400&h=1400&fit=max";
 $sName = "Toronto";
 $sDescription = "Toronto is often described as a smaller and less intense version of New York City. But as Canada’s most populous and largest city, this place has its own unique spirit.";
 $iNumMembers = 56;
@@ -14,5 +14,5 @@ $aDataToronto = [
     "description" => $sDescription,
     "numMembers" => $iNumMembers,
     "image" => $sPicture,
-    "articles" => $aArticlesCopenhagen
+    "articles" => $aArticlesToronto
 ];
