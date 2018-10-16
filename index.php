@@ -4,47 +4,56 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globuzzer - City section</title>
+
+    <?php
+    session_start();
+    include_once("section-data/section-data.php");
+    global $aSectionData;
+    $aData = [];
+    $sSectionId = "";
+    $sName = "Globuzzer";
+    $sDescription = "Social network for travelers and expats.";
+
+    if (isset($_REQUEST["section"])) {
+        $sSectionId = $_REQUEST["section"]; // e.g. 322063 for Copenhagen
+        $aData = $aSectionData[$sSectionId]; // data of current section
+        $sName = $aData["name"];
+        $sDescription = $aData["description"];
+    }
+    ?>
+
+    <title><?php echo $sName ?></title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <meta name="title" content="Globuzzer - City section">
+    <meta name="title" content="<?php echo $sName ?>">
     <meta name="description"
-          content="Globuzzer is the World's First Travelers' Social Network , here you can share your travel stories and get a full travel information from other nomads">
-    <meta name="keywords" content="globuzzer, traveler social network, social network for travelers">
+          content="<?php echo $sDescription ?>">
+    <meta name="keywords"
+          content="globuzzer, traveler social network, social network for travelers, <?php echo $sName ?>">
     <meta name="language" content="en">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="Globuzzer - City section" property="og:title">
-    <meta content="Globuzzer is the World's First Travelers' Social Network , here you can share your travel stories and get a full travel information from other nomads"
+    <meta content="<?php echo $sName ?>" property="og:title">
+    <meta content="<?php echo $sDescription ?>"
           property="og:description">
     <meta content="Globuzzer" property="og:site_name">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.globuzzer.com">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="./images/screenshot-globuzzer.jpg" name="twitter:image">
-    <meta content="Globuzzer - City section" name="twitter:title">
+    <meta content="<?php echo $sDescription ?>" name="twitter:title">
     <link rel="stylesheet" type='text/css' href="gb-style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
-    <?php
-    session_start();
-    include_once("section-data/section-data.php");
-    ?>
-
 </head>
 <body>
 
 <div class='gb-app-wrapper'>
     <div class='gb-app-black-overlay'></div>
     <?php
-    // data of all sections
-    global $aSectionData;
 
     renderNavAside();
     renderNavBar();
 
     if (isset($_REQUEST["section"])) {
-        $sSectionId = $_REQUEST["section"]; // e.g. 322063 for Copenhagen
-        $aData = $aSectionData[$sSectionId]; // data of current section
         renderData($sSectionId, $aData["image"], $aData["name"], $aData["numMembers"], $aData["description"], $aData["articles"]);
     }
 
@@ -103,7 +112,8 @@ function renderHeader($sSectionId, $sImgURL, $sTitle, $sDescription, $iNumberMem
         <div class="gb-card-two-wrapper-description gb-margin-bottom-desktop-32 gb-margin-bottom-tablet-32">
             <p class="gb-paragraph-medium gb-margin-bottom-desktop-32 "><?php echo $sDescription ?></p>
         </div>
-        <a href="https://globuzzer.mn.co/groups/<?php echo $sSectionId ?>"  target="_blank" class="gb-btn gb-btn-small gb-btn-white" type="button">Join</a>
+        <a href="https://globuzzer.mn.co/groups/<?php echo $sSectionId ?>" target="_blank"
+           class="gb-btn gb-btn-small gb-btn-white" type="button">Join</a>
         <div class="gb-avatars">
             <h4 class="gb-title-medium">
                 <?php echo $iNumberMembers ?> Members</h4>
@@ -148,7 +158,8 @@ function renderArticle($sTitle, $sContent, $sSource, $sPostedDate, $sURL)
         <div class='gb-card-four-sub-card-info'>
             <h2 class='gb-title-medium'><?php echo $sTitle ?></h2>
             <p class='gb-paragraph-small gb-margin-bottom-tablet-48 gb-margin-bottom-desktop-48'><?php echo $sContent ?></p>
-            <a href="<?php echo $sSource ?>"  target="_blank" class="gb-btn gb-btn-small gb-btn-white" type="button">View article</a>
+            <a href="<?php echo $sSource ?>" target="_blank" class="gb-btn gb-btn-small gb-btn-white" type="button">View
+                article</a>
             <ul class='posted-info'>
                 <li class='posted-by'>
                     <!--svg class='source gb-icon-black-opacity-30 gb-icon-small' version='1.1'
